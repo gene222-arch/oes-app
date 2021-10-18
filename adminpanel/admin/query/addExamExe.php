@@ -17,24 +17,21 @@
  {
  	$res = array("res" => "noDisplayLimit");
  }
- else if($selCourse->rowCount() > 0)
- {
-	$res = array("res" => "exist", "examTitle" => $examTitle);
- }
  else
  {
+
+	$createExamQuery = 
+		"INSERT INTO 
+			exam_tbl(cou_id, ex_title, ex_time_limit, ex_questlimit_display, ex_description) 
+		VALUES
+			('$courseSelected', '$examTitle', '$timeLimit', '$examQuestDipLimit', '$examDesc')
+	";
     
-	$insExam = $conn->query("INSERT INTO exam_tbl(cou_id,ex_title,ex_time_limit,ex_questlimit_display,ex_description) VALUES('$courseSelected','$examTitle','$timeLimit','$examQuestDipLimit','$examDesc') ");
-	if($insExam)
-	{
-		$res = array("res" => "success", "examTitle" => $examTitle);
-	}
-	else
-	{
-		$res = array("res" => "failed", "examTitle" => $examTitle);
-	}
+	$insExam = $conn->query($createExamQuery);
 
-
+	$res = !$insExam
+		? [ "res" => "Failed", "examTitle" => $examTitle ]
+		: [ "res" => "Success", "examTitle" => $examTitle ];
  }
 
 

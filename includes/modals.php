@@ -18,9 +18,14 @@
           <div class="form-group">
             <label>Feedback AS</label><br>
             <?php 
-               $selMe = $conn->query("SELECT * FROM examinee_tbl WHERE exmne_id = $exmneId ")->fetch(PDO::FETCH_ASSOC);
+               $examinee = $conn->query("SELECT * FROM examinee_tbl WHERE exmne_id = '$exmneId' ")->fetch(PDO::FETCH_OBJ);
+
+               $selectedTrack = $conn->query("SELECT * FROM course_tbl  WHERE cou_id = '$examinee->exmne_course' ")
+                ->fetch(PDO::FETCH_OBJ)
+                ->cou_name;
+
              ?>
-            <input type="radio" name="asMe" value="<?php echo $selMe['exmne_fullname']; ?>"> <?php echo $selMe['exmne_fullname']; ?> <br>
+            <input type="radio" name="asMe" value="<?php echo $examinee->exmne_fullname; ?>"> <?php echo $examinee->exmne_fullname; ?> <br>
             <input type="radio" name="asMe" value="Anonymous"> Anonymous
             
           </div>
@@ -52,37 +57,36 @@
       <div class="modal-body">
         <div class="col-md-12">
           <div class="form-group">
-		  <ul class="list-group">
-            <?php   
-                $res = SuggestCourseHelper::preferredCourse($exmneId);
+          <ul class="list-group">
+                <?php
+                    $res = SuggestCourseHelper::preferredStrand($exmneId, $selectedTrack);
 
-                foreach ($res as $index => $text) 
-				{
-					if (! is_array($text)) 
-					{
-						?> 
-							<li class="list-group-item <?= !$index ? 'active' : '' ?>">
-								<?= $text ?>
-							</li>
-						<?php
-					} 
-					else 
-					{
-						?> 
-							<ul class="list-group"> 
-								<?php 
-									foreach ($text as $otherRecommendation) 
-									{?> 
-										<li class="list-group-item">
-											<?= $otherRecommendation ?>
-										</li>
-									<?php
-									}
-					}
-				}
-             ?>
-		</ul>
-
+                    foreach ($res as $index => $text) 
+            {
+              if (! is_array($text)) 
+              {
+                ?> 
+                  <li class="list-group-item <?= !$index ? 'active' : '' ?>">
+                    <?= $text ?>
+                  </li>
+                <?php
+              } 
+              else 
+              {
+                ?> 
+                  <ul class="list-group"> 
+                    <?php 
+                      foreach ($text as $otherRecommendation) 
+                      {?> 
+                        <li class="list-group-item">
+                          <?= $otherRecommendation ?>
+                        </li>
+                      <?php
+                      }
+              }
+            }
+                ?>
+          </ul>
           </div>
         </div>
       </div>
