@@ -65,9 +65,12 @@
                                 <select class="form-control" name="courseId" required>
                                   <?php 
                                     $selAllCourse = $conn->query("SELECT * FROM course_tbl ORDER BY cou_id DESC");
+
                                     while ($selAllCourseRow = $selAllCourse->fetch(PDO::FETCH_ASSOC)) 
                                     { ?>
-                                      <option value="<?= $selAllCourseRow['cou_id']; ?>"><?= $selAllCourseRow['cou_name'] ?></option>
+                                      <option value="<?= $selAllCourseRow['cou_id'] ?>" <?= $selAllCourseRow['cou_id'] == $courseId ? 'selected' : '' ?>>
+                                        <?= $selAllCourseRow['cou_name'] ?>
+                                      </option>
                                     <?php 
                                     }
                                    ?>

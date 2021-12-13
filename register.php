@@ -2,6 +2,7 @@
 
 <?php 
 include 'conn.php';
+session_start();
 date_default_timezone_set('Asia/Manila');
  ?>
 <!DOCTYPE html>
@@ -32,68 +33,90 @@ date_default_timezone_set('Asia/Manila');
             <div class="card card-primary">
               <div class="card-header"><h4>Examinee Registration</h4></div>
 
-              <div class="card-body">
-                 
+              <div class="card-body"> 
                 <form action="addExamineeExe.php" method="POST" id="">
                   <div class="row">
                     <div class="form-group col-12">
                       <label for="frist_name">Full Name</label>
-                      <input id="frist_name" type="text" class="form-control" name="exmne_fullname" autofocus required>
-                    </div>
+                      <input 
+                          id="frist_name" 
+                          type="text" 
+                          class="form-control" name="exmne_fullname" autofocus required
+                          value="<?= isset($_SESSION['exmne_fullname']) ? $_SESSION['exmne_fullname'] : '' ?>"
+                        >
+                        </div>
                   </div>
                 <div class="row">
                   <div class="form-group col-6">
                     <label for="middle_name">Birth Date</label>
-                    <input id="bdate" type="date" class="form-control" name="exmne_birthdate" required>
-                    <div class="invalid-feedback">
-                    </div>
+                      <input id="bdate" type="date" class="form-control <?= isset($_SESSION['exmne_birthdate_error']) ? 'is-invalid' : '' ?>" name="exmne_birthdate"  class="date-input">
+                      <div class="invalid-feedback">
+                          <?php echo isset($_SESSION['exmne_birthdate_error']) ? $_SESSION['exmne_birthdate_error'] : '' ?>
+                        </div>
                   </div>
                   <div class="form-group col-6">
                       <label>Gender</label>
-                      <select class="form-control" name="exmne_gender" id="exmne_gender">
+                      <select class="form-control" name="exmne_gender" id="exmne_gender" required>
               <option value="0">Select gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="male" <?= isset($_SESSION['exmne_gender']) && $_SESSION['exmne_gender'] === 'male' ? 'selected' : '' ?>>Male</option>
+              <option value="female" <?= isset($_SESSION['exmne_gender']) && $_SESSION['exmne_gender'] === 'female' ? 'selected' : '' ?>>Female</option>
             </select>
                 </div>
             </div>
                 <div class="row">
                   <div class="form-group col-6">
                    <label>Preferred Track</label>
-            <select class="form-control" name="exmne_course" id="exmne_course">
+            <select class="form-control" name="exmne_course" id="exmne_course" required>
               <option value="0">Select Preferred Track</option>
               <?php 
                 $selCourse = $conn->query("SELECT * FROM course_tbl ORDER BY cou_id asc");
                 while ($selCourseRow = $selCourse->fetch(PDO::FETCH_ASSOC)) { ?>
-                  <option value="<?php echo $selCourseRow['cou_id']; ?>"><?php echo $selCourseRow['cou_name']; ?></option>
+                  <option 
+                    value="<?= $selCourseRow['cou_id']; ?>"
+                    <?= isset($_SESSION['exmne_course']) && $_SESSION['exmne_course'] === $selCourseRow['cou_name'] ? 'selected' : '' ?>
+                  ><?php echo $selCourseRow['cou_name']; ?></option>
                 <?php }
                ?>
             </select>
            </div>
+
+           <?php $years = ['first year', 'second year', 'third year', 'fourth year'];
+           ?>
                   <div class="form-group col-6">
                      <label>Year Level</label>
-            <select class="form-control" name="exmne_year_level" id="exmne_year_level">
+            <select class="form-control" name="exmne_year_level" id="exmne_year_level" required>
               <option value="0">Select year level</option>
-              <option value="first year">First Year</option>
-              <option value="second year">Second Year</option>
-              <option value="third year">Third Year</option>
-              <option value="fourth year">Fourth Year</option>
+                <?php 
+
+                    foreach ($years as $year) {
+                      ?>
+                        <option value="<?= $year ?>" 
+                        <?= isset($_SESSION['exmne_year_level']) && $_SESSION['exmne_year_level'] === $year ? 'selected' : '' ?>
+                        ><?= $year ?></option>
+                      <?php 
+                    }
+              ?>
             </select>
                   </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-6">
                       <label for="email">Email</label>
-                      <input id="email" type="email" class="form-control" name="exmne_email" autofocus required>
+                      <input id="email" type="email" class="form-control" name="exmne_email" autofocus  required
+                      value="<?= isset($_SESSION['exmne_email']) ? $_SESSION['exmne_email'] : '' ?>"
+                      >
                     </div>
                     <div class="form-group col-6">
                       <label for="password">Password</label>
-                      <input id="password" type="password" class="form-control" name="exmne_password" autofocus required>
+                      <input id="password" type="password" class="form-control" name="exmne_password" autofocus  required
+                      value="<?= isset($_SESSION['exmne_password']) ? $_SESSION['exmne_password'] : '' ?>"
+                      >
                     </div>
                 </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="agree" class="custom-control-input" id="agree" required>
+                      <input type="checkbox" name="agree" class="custom-control-input" id="agree"  required
+                      >
                       <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
                       <a href="index.php" style="float: right">LOGIN</a>
                     </div>
@@ -117,6 +140,7 @@ date_default_timezone_set('Asia/Manila');
     </section>
   </div>
 
+  
   <script src="dist/modules/jquery.min.js"></script>
   <script src="dist/modules/popper.js"></script>
   <script src="dist/modules/tooltip.js"></script>
