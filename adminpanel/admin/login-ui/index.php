@@ -14,13 +14,70 @@
 	<link rel="stylesheet" type="text/css" href="login-ui/vendor/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="login-ui/css/util.css">
 	<link rel="stylesheet" type="text/css" href="login-ui/css/main.css">
+	<script src="https://kit.fontawesome.com/274560d852.js" crossorigin="anonymous"></script>
+	<style>
+		.container-login100 {
+			background-image: url("login-ui/images/kapayapaan.jpg");
+			background-repeat: no-repeat;
+			width: 100%;
+			background-size: cover;
+			height: 80vh;
+			backdrop-filter: blur(3px);
+		}
+
+		.wrap-login100 {
+			width: 670px;
+			background: #fff;
+			border-radius: 0.25rem;
+			overflow: hidden;
+			position: relative;
+			border-top: 0.25rem solid #574B90;
+		}
+
+		.login100-form-btn {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0 20px;
+			min-width: 160px;
+			height: 50px;
+			background-color: #574B90;
+			border-radius: 0.25rem;
+
+			font-family: Poppins-Regular;
+			font-size: 16px;
+			color: #fff;
+			line-height: 1.2;
+
+			-webkit-transition: all 0.4s;
+			-o-transition: all 0.4s;
+			-moz-transition: all 0.4s;
+			transition: all 0.4s;
+		}
+
+		.login100-form-title::before {
+			content: "";
+			display: block;
+			position: absolute;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: #574B99;
+		}
+</style>
 </head>
 <body>
-	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(login-ui/images/1.jfif);">
+				<div class="login100-form-title">
+				<i class="fas fa-user-shield mb-2 fa-3x text-white"></i>
 					<span class="login100-form-title-1">
 						Sign In As Admin
 					</span>

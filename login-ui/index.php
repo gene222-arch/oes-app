@@ -12,16 +12,35 @@
 
   <link rel="stylesheet" href="dist/css/demo.css">
   <link rel="stylesheet" href="dist/css/style.css">
-</head>
 
+  <style>
+    .box-container {
+      background-color: white; 
+      font-size: 0.85rem; 
+      color: black; 
+      padding: 0.25rem 0;
+      border-radius: 0.25rem;
+      border-bottom: .25rem solid #574B90;
+    }
+    .login-brand 
+    {
+      border-top: .25rem solid #574B90;
+      background-color: white; 
+      font-size: 1.25rem; 
+      color: black; 
+      padding: 1rem;
+      border-radius: 0.25rem;
+    }
+  </style>
+</head>
 <body>
-  <div id="app">
+  <div id="app" class="container">
     <section class="section">
       <div class="container mt-5">
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand">
-              Login as Examinee
+              <strong>Login as Examinee</strong>
             </div>
 
             <div class="card card-primary">
@@ -76,6 +95,7 @@
                 </form>
               </div>
             </div>
+            <div class="box-container">
             <div class="mt-4 text-muted text-center">
               Don't have an account? <a href="register.php">Create One</a>
             </div>
@@ -84,6 +104,7 @@
             </div>
             <div class="simple-footer">
               Copyright &copy; Alright Reserve 2018
+            </div>
             </div>
           </div>
         </div>
