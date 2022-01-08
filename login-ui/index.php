@@ -96,15 +96,15 @@
               </div>
             </div>
             <div class="box-container">
-            <div class="mt-4 text-muted text-center">
-              Don't have an account? <a href="register.php">Create One</a>
-            </div>
-            <div class="mt-1 text-muted text-center">
-              <a href="adminpanel/admin/index.php">Login as admin</a>
-            </div>
-            <div class="simple-footer">
-              Copyright &copy; Alright Reserve 2018
-            </div>
+              <div class="mt-4 text-muted text-center">
+                Don't have an account? <a href="register.php">Create One</a>
+              </div>
+              <div class="mt-1 text-muted text-center">
+                <a href="adminpanel/admin/index.php">Login as admin</a>
+              </div>
+              <div class="simple-footer">
+                Copyright &copy; Alright Reserve 2018
+              </div>
             </div>
           </div>
         </div>

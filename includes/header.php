@@ -16,12 +16,23 @@
     <!-- MAIN CSS NIYA -->
     <link href="./main.css" rel="stylesheet">
     <link href="css/sweetalert.css" rel="stylesheet">
+    <style>
+        .hamburger-box {
+            margin-left: 1.37rem;
+        }
+    </style>
 </head>
 <body id="body">
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-               
+            <div class="">
+                    <img 
+                        src="https://scontent.fmnl13-1.fna.fbcdn.net/v/t1.6435-9/44740910_1255631464579298_8749958154256646144_n.png?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHMguOBmOeJCk_hWzqa0Q8denzDNMRTnmN6fMM0xFOeYyc_C5jOmuZuq7pPyT38X4YXDETV4LhwbsaJdFCJF_C5&_nc_ohc=i1d4zyAP18gAX9J2Tdp&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT_OtuVCkdCWraB5ZFxcSd2vUBBTfmhjNbwpSbD87Rk-mw&oe=61FF8308" 
+                        width="30" 
+                        height="30"
+                    >
+                </div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">

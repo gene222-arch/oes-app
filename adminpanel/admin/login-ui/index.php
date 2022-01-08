@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="login-ui/css/main.css">
 	<script src="https://kit.fontawesome.com/274560d852.js" crossorigin="anonymous"></script>
 	<style>
+
+		
 		.container-login100 {
 			background-image: url("login-ui/images/kapayapaan.jpg");
 			background-repeat: no-repeat;
@@ -26,7 +28,7 @@
 		}
 
 		.wrap-login100 {
-			width: 670px;
+			width: 51%;
 			background: #fff;
 			border-radius: 0.25rem;
 			overflow: hidden;
@@ -57,6 +59,39 @@
 			-o-transition: all 0.4s;
 			-moz-transition: all 0.4s;
 			transition: all 0.4s;
+			width: 50%;
+			margin: 0 auto;
+		}
+
+		.admin-btn {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0 20px;
+			min-width: 160px;
+			height: 50px;
+			background-color: transparent;
+			border-radius: 0.25rem;
+
+			font-family: Poppins-Regular;
+			font-size: 16px;
+			color: #2c2c2c;
+			line-height: 1.2;
+			border: 0.08rem solid #574B90;
+
+			-webkit-transition: all 0.4s;
+			-o-transition: all 0.4s;
+			-moz-transition: all 0.4s;
+			transition: all 0.4s;
+		}
+
+		.admin-btn:hover {
+			background-color: #574B90;
+			color: white;
 		}
 
 		.login100-form-title::before {
@@ -97,10 +132,15 @@
 					</div>
 
 
-					<div class="container-login100-form-btn" align="right">
+					<div class="container-login100-form-btn mb-2" align="right">
 						<button type="submit" class="login100-form-btn input100">
 							Login
 						</button>
+					</div>
+					<div class="container-login100-form-btn" align="right">
+						<a href="./../../" class="admin-btn input100">
+							Login as examinee
+						</a>
 					</div>
 				</form>
 			</div>
