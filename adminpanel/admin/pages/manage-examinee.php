@@ -44,6 +44,11 @@
                                                <a rel="facebox" href="facebox_modal/updateExaminee.php?id=<?php echo $selExmneRow['exmne_id']; ?>" class="btn btn-sm btn-primary">Update</a>
 
                                            </td>
+                                           <td>
+                                                <form action="query/deleteExaminee.php?examineeID=<?= $selExmneRow['exmne_id'] ?>" method="POST">
+                                                    <button type="submit" name="deleteExaminee" class="btn btn-danger">Delete</button>
+                                                </form>
+                                           </td>
                                         </tr>
                                     <?php }
                                 }

@@ -35,7 +35,7 @@
       ->query($query)
       ->fetch(PDO::FETCH_ASSOC);
  ?>
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
 <div class="app-main__outer">
         <div class="app-main__inner">
