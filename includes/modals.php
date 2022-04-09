@@ -58,34 +58,31 @@
         <div class="col-md-12">
           <div class="form-group">
           <ul class="list-group">
-                <?php
-                    $res = SuggestCourseHelper::preferredStrand($exmneId, $selectedTrack);
+			<?php
+				$result = SuggestCourseHelper::preferredStrand($exmneId, $selectedTrack);
+				
+				$strand = $result['preferred'];
+				$preferred = $result['preferredTrack']
+			?>
+				<span class="badge badge-info">Preferred</span>
+				<li class="list-group-item d-flex justify-content-between align-items-center mb-4">
+					<?= $preferred['strand'] ?>
+					<span class="badge badge-primary badge-pill"><?= $preferred['grade'] ?></span>
+				</li>
 
-                    foreach ($res as $index => $text) 
-            {
-              if (! is_array($text)) 
-              {
-                ?> 
-                  <li class="list-group-item <?= !$index ? 'active' : '' ?>">
-                    <?= $text ?>
-                  </li>
-                <?php
-              } 
-              else 
-              {
-                ?> 
-                  <ul class="list-group"> 
-                    <?php 
-                      foreach ($text as $otherRecommendation) 
-                      {?> 
-                        <li class="list-group-item">
-                          <?= $otherRecommendation ?>
-                        </li>
-                      <?php
-                      }
-              }
-            }
-                ?>
+				<ul class="list-group">
+					<?php 
+						foreach ($result['grades'] as $strand_ => $grade) {
+						?>
+							<li class="list-group-item d-flex justify-content-between align-items-center">
+								<?= strtoupper($strand_) ?>
+								<?= $strand_ === strtolower($strand) ? '<span class="badge badge-danger">Preferred</span>' : '' ?>
+								<span class="badge badge-primary badge-pill"><?= $grade ?></span>
+							</li>
+						<?php
+						}
+					?>
+				</ul>
           </ul>
           </div>
         </div>

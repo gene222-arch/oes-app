@@ -1,5 +1,6 @@
 <?php 
  include("../../../conn.php");
+ session_start();
 
 extract($_POST);
 
@@ -10,15 +11,35 @@ if($selQuest->rowCount() > 0)
 }
 else
 {
-	$insQuest = $conn->query("INSERT INTO exam_question_tbl(exam_id,exam_question,exam_ch1,exam_ch2,exam_ch3,exam_ch4,exam_answer) VALUES('$examId','$question','$choice_A','$choice_B','$choice_C','$choice_D','$correctAnswer') ");
+	$answers = [
+		$choice_A,
+		$choice_B,
+		$choice_C,
+		$choice_D
+	];
 
-	if($insQuest)
+	$answers = array_filter($answers, fn ($choice) => $choice === $correctAnswer);
+
+	$isCorrectAnswerMultiple = count(($answers)) > 1;
+
+	if ($isCorrectAnswerMultiple) {
+		$_SESSION['errorMessage'] = 'Oops! There are multiple correct answers.';
+	} 
+	
+	if (! $isCorrectAnswerMultiple) 
 	{
-       $res = array("res" => "success", "msg" => $question);
-	}
-	else
-	{
-       $res = array("res" => "failed");
+		$insQuest = $conn->query("INSERT INTO exam_question_tbl(exam_id,exam_question,exam_ch1,exam_ch2,exam_ch3,exam_ch4,exam_answer) VALUES('$examId','$question','$choice_A','$choice_B','$choice_C','$choice_D','$correctAnswer') ");
+
+		if($insQuest)
+		{
+		   $res = array("res" => "success", "msg" => $question);
+		}
+		else
+		{
+		   $res = array("res" => "failed");
+		}
+
+		unset($_SESSION['errorMessage']);
 	}
 }
 

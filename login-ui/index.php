@@ -21,6 +21,7 @@
       padding: 0.25rem 0;
       border-radius: 0.25rem;
       border-bottom: .25rem solid #574B90;
+	    margin: 0;
     }
     .login-brand 
     {
@@ -30,6 +31,14 @@
       color: black; 
       padding: 1rem;
       border-radius: 0.25rem;
+	  margin: 0;
+    }
+
+    .container {
+      background: url('./images/kapayapaan.jpg') no-repeat center center;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
     }
   </style>
 </head>
@@ -92,18 +101,15 @@
                       Login
                     </button>
                   </div>
-                </form>
-              </div>
-            </div>
-            <div class="box-container">
+				  <div class="box-container">
               <div class="mt-4 text-muted text-center">
                 Don't have an account? <a href="register.php">Create One</a>
               </div>
               <div class="mt-1 text-muted text-center">
                 <a href="adminpanel/admin/index.php">Login as admin</a>
               </div>
-              <div class="simple-footer">
-                Copyright &copy; Alright Reserve 2018
+            </div>
+                </form>
               </div>
             </div>
           </div>

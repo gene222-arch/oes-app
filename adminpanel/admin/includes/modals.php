@@ -207,6 +207,15 @@
       </div>
       <form class="refreshFrm" method="post" id="addQuestionFrm">
       <div class="modal-body">
+        <?php 
+          if (isset($_SESSION['errorMessage'])) {
+            ?>
+              <div class="alert alert-danger" role="alert">
+                <?= $_SESSION['errorMessage'] ?>
+              </div>
+            <?php 
+          }
+        ?>
         <div class="col-md-12">
           <div class="form-group">
             <label>Question</label>
