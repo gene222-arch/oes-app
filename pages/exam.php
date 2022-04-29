@@ -38,7 +38,7 @@
     <div class="col-md-12 p-0 mb-4">
         <form method="post" id="submitAnswerFrm">
             <input type="hidden" name="exam_id" id="exam_id" value="<?= $examId ?>">
-            <input type="hidden" name="examAction" id="examAction" value="" >
+            <input type="hidden" name="examAction" id="examAction" value="something" >
         <table class="align-middle mb-0 table table-borderless table-striped table-hover" id="tableList">
 
         <?php 
@@ -87,8 +87,8 @@
                                     </label>
                                 </div>   
 
-                                <div class="form-group pl-4">
-                                    <input name="answer[<?php echo $questId; ?>][correct]" value="<?= 'No Naswer' ?>" class="form-check-input" type="hidden" checked>
+                                <div class="form-group pl-4" style="display: none;">
+                                    <input name="answer[<?php echo $questId; ?>][correct]" value="<?= 'No Answer' ?>" class="form-check-input" type="radio" checked>
                                 </div>   
                             </div>
                         </td>

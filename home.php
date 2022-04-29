@@ -77,7 +77,7 @@ if(!isset($_SESSION['examineeSession']['examineenakalogin']) == true) header("lo
     }
 
     window.onload = function () {
-        var fiveMinutes = 60 * .25,
+        var fiveMinutes = 60 * .25, // ung .25 equivalent sa 30 seconds
         display = document.querySelector('#timer');
         startTimer(fiveMinutes, display);
     };

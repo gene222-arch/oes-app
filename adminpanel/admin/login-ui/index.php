@@ -19,7 +19,7 @@
 
 		
 		.container-login100 {
-			background-image: url("login-ui/images/kapayapaan.jpg");
+			background-image: url("./../../login-ui/images/kapayapaan.jpg");
 			background-repeat: no-repeat;
 			width: 100%;
 			background-size: cover;

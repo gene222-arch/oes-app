@@ -27,7 +27,7 @@ $(document).on("submit","#examineeLoginFrm", function(){
     // Submit Answer
     $(document).on('submit', '#submitAnswerFrm', function()
     {
-        var examAction = $('#examAction').val();
+        var examAction = document.getElementById('examAction').value;
 
         if(! examAction)
         {
@@ -147,14 +147,7 @@ $(document).on("submit","#examineeLoginFrm", function(){
             });
         }
 
-
-
-
-
-
-
-
-    return false;
+        return false;
     });
 
 
